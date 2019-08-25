@@ -34,8 +34,8 @@ public void OnProjSpawn(int ent)
 	if (!(0 < owner <= MaxClients))
 		return;
 
-	if (GetEntProp(ent, Prop_Send, "m_bCritical"))
-		return;
+//	if (GetEntProp(ent, Prop_Send, "m_bCritical"))
+//		return;
 
 	bMiniStatus[ent] = TF2_IsPlayerInCondition(owner, TFCond_CritCola)
 					|| TF2_IsPlayerInCondition(owner, TFCond_Buffed)
