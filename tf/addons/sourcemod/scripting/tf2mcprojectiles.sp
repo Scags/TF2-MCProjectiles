@@ -47,10 +47,14 @@ public Action TF2_OnTakeDamage(int victim, int & attacker, int & inflictor, floa
 	if (weapon == -1)	// Fuck
 		return Plugin_Continue;
 
-	if (inflictor != -1 && bMiniStatus[inflictor] && crittype < CritType_MiniCrit)
+	if (inflictor != -1)
 	{
-		crittype = CritType_MiniCrit;
-		return Plugin_Changed;
+		if (bMiniStatus[inflictor] && crittype < CritType_MiniCrit && !(damagetype & DMG_CRIT))
+		{
+			crittype = CritType_MiniCrit;
+			return Plugin_Changed;
+		}
+		bMiniStatus[inflictor] = false;
 	}
 	return Plugin_Continue;
 }
